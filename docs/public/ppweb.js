@@ -58,7 +58,9 @@ const initNotes = async () => {
     const urlHref = window.location.href
     const isChinese = urlHref.includes('zh')
     const ppPathName = window.location.pathname
-    const contentValue = isChinese ? ppnotesJsonData.zh : ppnotesJsonData.en
+    const contentValue = isChinese
+        ? ppnotesJsonData.zh.note
+        : ppnotesJsonData.en.note
     const titleValue = isChinese ? 'PackPlus公告' : 'PakePlus Notice'
     const okTextValue = isChinese ? '确定' : 'OK'
     if (
