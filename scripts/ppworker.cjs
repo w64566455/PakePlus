@@ -152,19 +152,23 @@ const updateIndexHtml = (
     pwdBtn,
     pwdPlace,
     pwdTip,
-    pwdError
+    pwdError,
+    pwdStyle,
+    pwdTheme
 ) => {
     console.log('updateIndexHtml......')
     const indexHtmlPath = path.join(__dirname, '../src/index.html')
     const indexHtml = fs.readFileSync(indexHtmlPath, 'utf-8')
     const newIndexHtml = indexHtml
-        .replace('startMethod', startMethod)
-        .replace('startPwd', startPwd)
-        .replace('pwdTitle', pwdTitle)
-        .replace('pwdBtn', pwdBtn)
-        .replace('pwdPlace', pwdPlace)
-        .replace('pwdTip', pwdTip)
-        .replace('pwdError', pwdError)
+        .replaceAll('startMethod', startMethod)
+        .replaceAll('startPwd', startPwd)
+        .replaceAll('pwdTitle', pwdTitle)
+        .replaceAll('pwdBtn', pwdBtn)
+        .replaceAll('pwdPlace', pwdPlace)
+        .replaceAll('pwdTip', pwdTip)
+        .replaceAll('pwdError', pwdError)
+        .replaceAll('pwdStyle', pwdStyle)
+        .replaceAll('pwdTheme', pwdTheme)
     fs.writeFileSync(indexHtmlPath, newIndexHtml)
     console.log('updateIndexHtml success')
 }
@@ -267,6 +271,8 @@ const main = async () => {
         pwdPlace,
         pwdTip,
         pwdError,
+        pwdStyle,
+        pwdTheme,
     } = ppconfig.desktop
     // get windows config
     const winConfig = ppconfig.more.windows
@@ -287,7 +293,9 @@ const main = async () => {
         pwdBtn,
         pwdPlace,
         pwdTip,
-        pwdError
+        pwdError,
+        pwdStyle,
+        pwdTheme
     )
     // 更新 cargo.toml
     updateCargoToml(
